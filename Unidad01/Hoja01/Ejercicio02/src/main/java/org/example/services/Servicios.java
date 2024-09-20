@@ -23,7 +23,7 @@ public class Servicios {
             pstmt.setString(4, movie.getProductora());
             n=pstmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return n;
     }
@@ -89,7 +89,7 @@ public class Servicios {
         return n;
     }
 
-    public static int eliminarActuación(int idPersonaje, int idPelicula) {
+    public static int eliminarActuacion(int idPersonaje, int idPelicula) {
         String sql = "DELETE FROM acts WHERE character_id = ? AND movie_id = ?";
         int n = -1;
         try (Connection conn = ConexionSQLite.get_conexion();
