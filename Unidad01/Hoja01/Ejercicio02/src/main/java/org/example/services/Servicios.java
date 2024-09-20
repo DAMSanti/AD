@@ -4,7 +4,6 @@ import org.example.conexion.ConexionSQLite;
 import org.example.objetos.Acts;
 import org.example.objetos.Characters;
 import org.example.objetos.Movies;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
