@@ -32,7 +32,11 @@ public class Main {
                     case 1 -> {
                         System.out.println("PELÍCULAS");
                         Map<String, Pelicula> peliculas = rsToPelicula(obtenerPeliculas());
-                        peliculas.forEach((k, v) -> System.out.println(v.formatInfo()));
+                        if (peliculas.isEmpty()) {
+                            System.out.println("No hay películas");
+                        } else {
+                            peliculas.forEach((k, v) -> System.out.println(v.formatInfo()));
+                        }
                     }
                     case 2 -> {
 
@@ -87,6 +91,9 @@ public class Main {
     }
 
     public static Map<String, Pelicula> rsToPelicula(ResultSet rs) {
+        if (rs == null) {
+            System.out.println("No hay películas");
+        }
         Pelicula pelicula = null;
         Map<String, Pelicula> peliculas = new HashMap<>();
         try {
