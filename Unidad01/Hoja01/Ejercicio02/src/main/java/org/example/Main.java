@@ -129,7 +129,7 @@ public class Main {
         System.out.println("Introduce la id de la pelicula: ");
         int idPelicula = teclado.nextInt();
         teclado.nextLine();
-        if (Servicios.eliminarActuacion(idPersonaje, idPelicula) != 1) {
+        if (Servicios.eliminarActuación(idPersonaje, idPelicula) != 1) {
             System.out.println("No se ha podido eliminar la actuación");
         } else {
             System.out.println("Actuación eliminada");
