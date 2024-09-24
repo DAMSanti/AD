@@ -24,6 +24,8 @@ public class Servicios {
             n=pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            ConexionSQLite.close_conexion();
         }
         return n;
     }
@@ -31,8 +33,9 @@ public class Servicios {
     public static int insertarActuaciones(Acts act) {
         String sql = "INSERT INTO acts (character_id, movie_id,  main_character, actor) VALUES (?, ?, ?, ?)";
         int n = -1;
-        try (Connection conn = ConexionSQLite.get_conexion();
-             PreparedStatement pstatement = conn.prepareStatement(sql)) {
+        try {
+            Connection conn = ConexionSQLite.get_conexion();
+            PreparedStatement pstatement = conn.prepareStatement(sql);
             pstatement.setInt(1, act.getCharacter_id());
             pstatement.setInt(2, act.getMovie_id());
             pstatement.setInt(3, act.isMain_character());
@@ -40,6 +43,8 @@ public class Servicios {
             n=pstatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            ConexionSQLite.close_conexion();
         }
         return n;
     }
@@ -47,8 +52,9 @@ public class Servicios {
     public static int insertarPersonaje(Characters character) {
         String sql = "INSERT INTO characters (name, powers, company, origin, isHeroe) VALUES  (?, ?, ?, ?, ?)";
         int n = -1;
-        try (Connection conn = ConexionSQLite.get_conexion();
-             PreparedStatement pstatement = conn.prepareStatement(sql)) {
+        try {
+            Connection conn = ConexionSQLite.get_conexion();
+            PreparedStatement pstatement = conn.prepareStatement(sql);
             pstatement.setString(1, character.getName());
             pstatement.setString(2, character.getPowers());
             pstatement.setString(3, character.getCompany());
@@ -57,6 +63,8 @@ public class Servicios {
             n=pstatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            ConexionSQLite.close_conexion();
         }
         return n;
     }
@@ -64,13 +72,16 @@ public class Servicios {
     public static int modificarOrigen(String nombrePersonaje, Characters character) {
         String sql = "UPDATE characters SET origin = ? WHERE name = ?";
         int n = -1;
-        try (Connection conn = ConexionSQLite.get_conexion();
-             PreparedStatement pstatement = conn.prepareStatement(sql)) {
+        try {
+            Connection conn = ConexionSQLite.get_conexion();
+            PreparedStatement pstatement = conn.prepareStatement(sql);
             pstatement.setString(1, character.getOrigin());
             pstatement.setString(2, nombrePersonaje);
             n=pstatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            ConexionSQLite.close_conexion();
         }
         return n;
     }
@@ -78,13 +89,16 @@ public class Servicios {
     public static int modificarEstreno(int idPeli, Movies movie) {
         String sql = "UPDATE movies SET year = ? WHERE id = ?";
         int n = -1;
-        try (Connection conn = ConexionSQLite.get_conexion();
-             PreparedStatement pstatement = conn.prepareStatement(sql)) {
+        try {
+            Connection conn = ConexionSQLite.get_conexion();
+            PreparedStatement pstatement = conn.prepareStatement(sql);
             pstatement.setInt(1, movie.getYear());
             pstatement.setInt(2, idPeli);
             n=pstatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            ConexionSQLite.close_conexion();
         }
         return n;
     }
@@ -92,13 +106,16 @@ public class Servicios {
     public static int eliminarActuación(int idPersonaje, int idPelicula) {
         String sql = "DELETE FROM acts WHERE character_id = ? AND movie_id = ?";
         int n = -1;
-        try (Connection conn = ConexionSQLite.get_conexion();
-             PreparedStatement pstatement = conn.prepareStatement(sql)) {
+        try {
+            Connection conn = ConexionSQLite.get_conexion();
+            PreparedStatement pstatement = conn.prepareStatement(sql);
             pstatement.setInt(1, idPersonaje);
             pstatement.setInt(2, idPelicula);
             n=pstatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            ConexionSQLite.close_conexion();
         }
         return n;
     }
@@ -106,12 +123,15 @@ public class Servicios {
     public static int eliminarPelicula(String tituloPelicula) {
         String sql = "DELETE FROM movies WHERE title = ?";
         int n = -1;
-        try (Connection conn = ConexionSQLite.get_conexion();
-             PreparedStatement pstatement = conn.prepareStatement(sql)) {
+        try {
+            Connection conn = ConexionSQLite.get_conexion();
+            PreparedStatement pstatement = conn.prepareStatement(sql);
             pstatement.setString(1, tituloPelicula);
             n=pstatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            ConexionSQLite.close_conexion();
         }
         return n;
     }
@@ -119,13 +139,16 @@ public class Servicios {
     public static int modificarProductora(String nombreProductora, String nuevaProductora) {
         String sql = "UPDATE movies SET productora = ? WHERE productora = ?";
         int n = -1;
-        try (Connection conn = ConexionSQLite.get_conexion();
-             PreparedStatement pstatement = conn.prepareStatement(sql)) {
+        try {
+            Connection conn = ConexionSQLite.get_conexion();
+            PreparedStatement pstatement = conn.prepareStatement(sql);
             pstatement.setString(1, nuevaProductora);
             pstatement.setString(2, nombreProductora);
             n=pstatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            ConexionSQLite.close_conexion();
         }
         return n;
     }
