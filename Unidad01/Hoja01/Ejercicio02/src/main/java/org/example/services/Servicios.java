@@ -85,6 +85,35 @@ public class Servicios {
         return n;
     }
 
+    /*
+    public static int updateMovieYearById(int id, int year) {
+    PreparedStatement st=null;
+    int n= 0;
+    if (ConexionSQLte.getConexion()!=null){
+    String sql = "UPDATE movies...."
+    try{
+    st = ConexionSQLte.getConexion().prepareStatement(sql);
+    st.setInt(1, year);
+    st.setInt(2, id);
+    n = st.executeUpdate(st);
+    } catch (SQLException e){
+    e.printStackTrace();
+    } finally {
+    closeStatement(st);
+    }
+    }
+
+
+    public static void cerrarStatement(Statement st) {
+    if (st!=null){
+    try {
+    st.close();
+    } catch (SQLException e){
+    e.printStackTrace();
+    }
+    }
+     */
+
     public static int modificarEstreno(int idPeli, Movies movie) {
         String sql = "UPDATE movies SET year = ? WHERE id = ?";
         int n = -1;
