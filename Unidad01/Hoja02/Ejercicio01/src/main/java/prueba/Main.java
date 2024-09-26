@@ -31,33 +31,15 @@ public class Main {
                         + "\t0- Salir");
                 int opcion = teclado.nextInt();
                 switch (opcion) {
-                    case 1 -> {
-                        muestraPeliculas();
-                    }
-                    case 2 -> {
-                        muestraPersonajes();
-                    }
-                    case 3 -> {
-                        buscaPersonaje();
-                    }
-                    case 4 -> {
-                        muestraActuaciones();
-                    }
-                    case 5 -> {
-                        muestraSinProductora();
-                    }
-                    case 6 -> {
-                        muestraActoresPeli();
-                    }
-                    case 7 -> {
-                        muestraPeliMasVieja();
-                    }
-                    case 8 -> {
-                        muestraFilmografia();
-                    }
-                    case 9 -> {
-                        muestraPelisSinPersonajes();
-                    }
+                    case 1 -> muestraPeliculas();
+                    case 2 -> muestraPersonajes();
+                    case 3 -> buscaPersonaje();
+                    case 4 -> muestraActuaciones();
+                    case 5 -> muestraSinProductora();
+                    case 6 -> muestraActoresPeli();
+                    case 7 -> muestraPeliMasVieja();
+                    case 8 -> muestraFilmografia();
+                    case 9 -> muestraPelisSinPersonajes();
                     case 0 -> salir = true;
                     default -> System.out.println("Opción no válida");
                 }
