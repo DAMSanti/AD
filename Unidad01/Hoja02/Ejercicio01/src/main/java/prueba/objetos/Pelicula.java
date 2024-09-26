@@ -54,6 +54,6 @@ public class Pelicula {
     }
 
     public String formatInfo() {
-        return String.format("%-4d%-20s%-10s %-15s%-10s", id, titulo, duracion, año, productora);
+        return String.format("%-10d %-20s %-10s %-10s %-15s", id, titulo.length() > 20 ? titulo.substring(0, 17) + "..." : titulo , duracion, año, productora);
     }
 }

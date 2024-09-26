@@ -62,6 +62,6 @@ public class Personaje {
     }
 
     public String formatoInfo() {
-        return String.format("%-4d%-20s%-50s %-15s%-20s%-10s", id, nombre, poderes.length()>50?poderes.substring(0, 50):poderes, empresa, origen, esHeroe==1?"Superheroe":"Villano");
+        return String.format("%-4d %-20s %-50s %-15s %-20s %-10s", id, nombre, poderes.length()>50?poderes.substring(0, 47) + "...":poderes, empresa, origen, esHeroe==1?"Superheroe":"Villano");
     }
 }
