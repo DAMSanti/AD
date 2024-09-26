@@ -32,126 +32,31 @@ public class Main {
                 int opcion = teclado.nextInt();
                 switch (opcion) {
                     case 1 -> {
-                        System.out.println("PELÍCULAS");
-                        List<Pelicula> peliculas = Services.obtenerPeliculas();
-                        if (peliculas.isEmpty()) {
-                            System.out.println("No hay películas");
-                        } else {
-                            String cabecera = String.format("%-10s %-20s %-10s %-10s %-15s", "ID", "Titulo", "Duracion", "Año", "Productora");
-                            String row = "-".repeat(cabecera.length()) + "\n";
-                            System.out.printf("%s\n%s", cabecera, row);
-                            peliculas.forEach((v) -> System.out.println(v.formatInfo()));
-                            System.out.println(row);
-                        }
+                        muestraPeliculas();
                     }
                     case 2 -> {
-                        System.out.println("PERSONAJES");
-                        List<Personaje> personajes = Services.obtenerPersonajes();
-                        if (personajes.isEmpty()) {
-                            System.out.println("No hay personajes");
-                        } else {
-                            String cabecera = String.format("%-4s %-20s %-50s %-15s %-20s %-10s", "ID", "Nombre", "Poderes", "Compañia", "Origen", "Es heroe");
-                            String row = "-".repeat(cabecera.length()) + "\n";
-                            System.out.printf("%s\n%s", cabecera, row);
-                            personajes.forEach((v) -> System.out.println(v.formatoInfo()));
-                            System.out.println(row);
-                        }
+                        muestraPersonajes();
                     }
                     case 3 -> {
-                        System.out.println("Introduce la ID del personaje que quieres inspeccionar: ");
-                        int id = teclado.nextInt();
-                        Personaje personaje = Services.obtenerPersonajeID(id);
-                        System.out.println("PERSONAJE");
-                        if (personaje == null) {
-                            System.out.println("No hay personaje con esa ID");
-                        } else {
-                            String cabecera = String.format("%-4s %-20s %-50s %-15s %-20s %-10s", "ID", "Nombre", "Poderes", "Compañia", "Origen", "Es heroe");
-                            String row = "-".repeat(cabecera.length()) + "\n";
-                            System.out.printf("%s\n%s", cabecera, row);
-                            System.out.println(personaje.formatoInfo());
-                            System.out.println(row);
-                        }
+                        buscaPersonaje();
                     }
                     case 4 -> {
-                        System.out.println("ACTUACIONES");
-                        List<Map<String, Object>> actuaciones = Services.obtenerPersonajesPelicula();
-                        if (actuaciones.isEmpty()) {
-                            System.out.println("No hay actuaciones");
-                        } else {
-                            String cabecera = String.format("%-30s %-10s %-30s %-30s", "Titulo", "Año", "Nombre", "Actor");
-                            String row = "-".repeat(cabecera.length()) + "\n";
-                            System.out.printf("%s\n%s", cabecera, row);
-                            actuaciones.forEach((v) -> System.out.printf("%-30s %-10s %-30s %-30s\n", v.get("titulo"), v.get("año"), v.get("nombre"), v.get("actor")));
-                            System.out.println(row);
-                        }
+                        muestraActuaciones();
                     }
                     case 5 -> {
-                        System.out.println("PELÍCULAS");
-                        List<Pelicula> peliculas = Services.obtenerPeliculasSinProductora();
-                        if (peliculas.isEmpty()) {
-                            System.out.println("No hay películas");
-                        } else {
-                            String cabecera = String.format("%-10s %-20s %-10s %-10s %-15s", "ID", "Titulo", "Duracion", "Año", "Productora");
-                            String row = "-".repeat(cabecera.length()) + "\n";
-                            System.out.printf("%s\n%s", cabecera, row);
-                            peliculas.forEach((v) -> System.out.println(v.formatInfo()));
-                            System.out.println(row);
-                        }
+                        muestraSinProductora();
                     }
                     case 6 -> {
-                        System.out.println("ACTORES POR PELICULA");
-                        List<Map<String, Object>> actores = Services.obtenerPersonajesPorPelicula();
-                        if (actores.isEmpty()) {
-                            System.out.println("No hay actuaciones");
-                        } else {
-                            String cabecera = String.format("%-30s %-10s", "Titulo", "Nº Actores");
-                            String row = "-".repeat(cabecera.length()) + "\n";
-                            System.out.printf("%s\n%s", cabecera, row);
-                            actores.forEach((v) -> System.out.printf("%-30s %-10s\n", v.get("titulo"), v.get("actores")));
-                            System.out.println(row);
-                        }
+                        muestraActoresPeli();
                     }
                     case 7 -> {
-                        System.out.println("PELÍCULAS");
-                        List<Pelicula> peliculas = Services.obtenerPeliculaMasVieja();
-                        if (peliculas.isEmpty()) {
-                            System.out.println("No hay películas");
-                        } else {
-                            String cabecera = String.format("%-10s %-20s %-10s %-10s %-15s", "ID", "Titulo", "Duracion", "Año", "Productora");
-                            String row = "-".repeat(cabecera.length()) + "\n";
-                            System.out.printf("%s\n%s", cabecera, row);
-                            peliculas.forEach((v) -> System.out.println(v.formatInfo()));
-                            System.out.println(row);
-                        }
+                        muestraPeliMasVieja();
                     }
                     case 8 -> {
-                        System.out.println("Introduce el nombre de un actor del que quieras saber la filmografía: ");
-                        teclado = new Scanner(System.in);
-                        String actor = teclado.nextLine();
-                        List<Pelicula> peliculas = Services.obtenerPeliculasPorActor(actor);
-                        System.out.println("PELÍCULAS");
-                        if (peliculas.isEmpty()) {
-                            System.out.println("No hay películas");
-                        } else {
-                            String cabecera = String.format("%-10s %-20s %-10s %-10s %-15s", "ID", "Titulo", "Duracion", "Año", "Productora");
-                            String row = "-".repeat(cabecera.length()) + "\n";
-                            System.out.printf("%s\n%s", cabecera, row);
-                            peliculas.forEach((v) -> System.out.println(v.formatInfo()));
-                            System.out.println(row);
-                        }
+                        muestraFilmografia();
                     }
                     case 9 -> {
-                        List<Pelicula> peliculas = Services.obtenerPeliculasSinPersonajes();
-                        System.out.println("PELÍCULAS");
-                        if (peliculas.isEmpty()) {
-                            System.out.println("No hay películas");
-                        } else {
-                            String cabecera = String.format("%-10s %-20s %-10s %-10s %-15s", "ID", "Titulo", "Duracion", "Año", "Productora");
-                            String row = "-".repeat(cabecera.length()) + "\n";
-                            System.out.printf("%s\n%s", cabecera, row);
-                            peliculas.forEach((v) -> System.out.println(v.formatInfo()));
-                            System.out.println(row);
-                        }
+                        muestraPelisSinPersonajes();
                     }
                     case 0 -> salir = true;
                     default -> System.out.println("Opción no válida");
@@ -163,24 +68,136 @@ public class Main {
         }
     }
 
-
-
-    public static Map<String, Pelicula> rsToPelicula(ResultSet rs) {
-        if (rs == null) {
+    public static void muestraPeliculas() {
+        System.out.println("PELÍCULAS");
+        List<Pelicula> peliculas = Services.obtenerPeliculas();
+        if (peliculas.isEmpty()) {
             System.out.println("No hay películas");
+        } else {
+            String cabecera = String.format("%-10s %-20s %-10s %-10s %-15s", "ID", "Titulo", "Duracion", "Año", "Productora");
+            String row = "-".repeat(cabecera.length()) + "\n";
+            System.out.printf("%s\n%s", cabecera, row);
+            peliculas.forEach((v) -> System.out.println(v.formatInfo()));
+            System.out.println(row);
         }
-        Pelicula pelicula;
-        Map<String, Pelicula> peliculas = new HashMap<>();
-        try {
-            while (rs.next()) {
-                pelicula = new Pelicula(rs.getInt("id"), rs.getString("title"), rs.getInt("duration"), rs.getInt("year"), rs.getString("productora"));
-                peliculas.put(rs.getString("title"), pelicula);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return peliculas;
     }
 
+    public static void muestraPersonajes() {
+        System.out.println("PERSONAJES");
+        List<Personaje> personajes = Services.obtenerPersonajes();
+        if (personajes.isEmpty()) {
+            System.out.println("No hay personajes");
+        } else {
+            String cabecera = String.format("%-4s %-20s %-50s %-15s %-20s %-10s", "ID", "Nombre", "Poderes", "Compañia", "Origen", "Es heroe");
+            String row = "-".repeat(cabecera.length()) + "\n";
+            System.out.printf("%s\n%s", cabecera, row);
+            personajes.forEach((v) -> System.out.println(v.formatoInfo()));
+            System.out.println(row);
+        }
+    }
 
+    public static void buscaPersonaje() {
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Introduce la ID del personaje que quieres inspeccionar: ");
+        int id = teclado.nextInt();
+        Personaje personaje = Services.obtenerPersonajeID(id);
+        System.out.println("PERSONAJE");
+        if (personaje == null) {
+            System.out.println("No hay personaje con esa ID");
+        } else {
+            String cabecera = String.format("%-4s %-20s %-50s %-15s %-20s %-10s", "ID", "Nombre", "Poderes", "Compañia", "Origen", "Es heroe");
+            String row = "-".repeat(cabecera.length()) + "\n";
+            System.out.printf("%s\n%s", cabecera, row);
+            System.out.println(personaje.formatoInfo());
+            System.out.println(row);
+        }
+    }
+
+    public static void muestraActuaciones() {
+        System.out.println("ACTUACIONES");
+        List<Map<String, Object>> actuaciones = Services.obtenerPersonajesPelicula();
+        if (actuaciones.isEmpty()) {
+            System.out.println("No hay actuaciones");
+        } else {
+            String cabecera = String.format("%-30s %-10s %-30s %-30s", "Titulo", "Año", "Nombre", "Actor");
+            String row = "-".repeat(cabecera.length()) + "\n";
+            System.out.printf("%s\n%s", cabecera, row);
+            actuaciones.forEach((v) -> System.out.printf("%-30s %-10s %-30s %-30s\n", v.get("titulo"), v.get("año"), v.get("nombre"), v.get("actor")));
+            System.out.println(row);
+        }
+    }
+
+    public static void muestraSinProductora() {
+        System.out.println("PELÍCULAS");
+        List<Pelicula> peliculas = Services.obtenerPeliculasSinProductora();
+        if (peliculas.isEmpty()) {
+            System.out.println("No hay películas");
+        } else {
+            String cabecera = String.format("%-10s %-20s %-10s %-10s %-15s", "ID", "Titulo", "Duracion", "Año", "Productora");
+            String row = "-".repeat(cabecera.length()) + "\n";
+            System.out.printf("%s\n%s", cabecera, row);
+            peliculas.forEach((v) -> System.out.println(v.formatInfo()));
+            System.out.println(row);
+        }
+    }
+
+    public static void muestraActoresPeli() {
+        System.out.println("ACTORES POR PELICULA");
+        List<Map<String, Object>> actores = Services.obtenerPersonajesPorPelicula();
+        if (actores.isEmpty()) {
+            System.out.println("No hay actuaciones");
+        } else {
+            String cabecera = String.format("%-30s %-10s", "Titulo", "Nº Actores");
+            String row = "-".repeat(cabecera.length()) + "\n";
+            System.out.printf("%s\n%s", cabecera, row);
+            actores.forEach((v) -> System.out.printf("%-30s %-10s\n", v.get("titulo"), v.get("actores")));
+            System.out.println(row);
+        }
+    }
+
+    public static void muestraPeliMasVieja() {
+        System.out.println("PELÍCULAS");
+        List<Pelicula> peliculas = Services.obtenerPeliculaMasVieja();
+        if (peliculas.isEmpty()) {
+            System.out.println("No hay películas");
+        } else {
+            String cabecera = String.format("%-10s %-20s %-10s %-10s %-15s", "ID", "Titulo", "Duracion", "Año", "Productora");
+            String row = "-".repeat(cabecera.length()) + "\n";
+            System.out.printf("%s\n%s", cabecera, row);
+            peliculas.forEach((v) -> System.out.println(v.formatInfo()));
+            System.out.println(row);
+        }
+    }
+
+    public static void muestraFilmografia() {
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Introduce el nombre de un actor del que quieras saber la filmografía: ");
+        teclado = new Scanner(System.in);
+        String actor = teclado.nextLine();
+        List<Pelicula> peliculas = Services.obtenerPeliculasPorActor(actor);
+        System.out.println("PELÍCULAS");
+        if (peliculas.isEmpty()) {
+            System.out.println("No hay películas");
+        } else {
+            String cabecera = String.format("%-10s %-20s %-10s %-10s %-15s", "ID", "Titulo", "Duracion", "Año", "Productora");
+            String row = "-".repeat(cabecera.length()) + "\n";
+            System.out.printf("%s\n%s", cabecera, row);
+            peliculas.forEach((v) -> System.out.println(v.formatInfo()));
+            System.out.println(row);
+        }
+    }
+
+    public static void muestraPelisSinPersonajes() {
+        List<Pelicula> peliculas = Services.obtenerPeliculasSinPersonajes();
+        System.out.println("PELÍCULAS");
+        if (peliculas.isEmpty()) {
+            System.out.println("No hay películas");
+        } else {
+            String cabecera = String.format("%-10s %-20s %-10s %-10s %-15s", "ID", "Titulo", "Duracion", "Año", "Productora");
+            String row = "-".repeat(cabecera.length()) + "\n";
+            System.out.printf("%s\n%s", cabecera, row);
+            peliculas.forEach((v) -> System.out.println(v.formatInfo()));
+            System.out.println(row);
+        }
+    }
 }
