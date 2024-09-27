@@ -20,7 +20,7 @@ public class Services {
         ResultSet rs = null;
         int n= 0;
         if (ConexionSQLite.get_conexion()!=null){
-            String sql = "SELECT * FROM movies";
+            String sql = "SELECT id, title, duration, year, productora FROM movies";
             try{
                 st = ConexionSQLite.get_conexion().prepareStatement(sql);
                 rs = st.executeQuery();
@@ -44,7 +44,7 @@ public class Services {
         ResultSet rs = null;
         int n= 0;
         if (ConexionSQLite.get_conexion()!=null){
-            String sql = "SELECT * FROM Characters";
+            String sql = "SELECT id, name, powers, company, origin, isHeroe FROM Characters";
             try{
                 st = ConexionSQLite.get_conexion().prepareStatement(sql);
                 rs = st.executeQuery();
@@ -68,7 +68,7 @@ public class Services {
         ResultSet rs = null;
         int n= 0;
         if (ConexionSQLite.get_conexion()!=null){
-            String sql = "SELECT * FROM Characters WHERE id = ?";
+            String sql = "SELECT id, name, powers, company, origin, isHeroe FROM Characters WHERE id = ?";
             try{
                 st = ConexionSQLite.get_conexion().prepareStatement(sql);
                 st.setInt(1, id);
@@ -119,7 +119,7 @@ public class Services {
         ResultSet rs = null;
         int n= 0;
         if (ConexionSQLite.get_conexion()!=null){
-            String sql = "SELECT * FROM Movies WHERE productora IS NULL";
+            String sql = "SELECT id, title, duration, year, productora FROM Movies WHERE productora IS NULL";
             try{
                 st = ConexionSQLite.get_conexion().prepareStatement(sql);
                 rs = st.executeQuery();
@@ -169,7 +169,7 @@ public class Services {
         ResultSet rs = null;
         int n= 0;
         if (ConexionSQLite.get_conexion()!=null){
-            String sql = "SELECT * FROM movies WHERE year = (SELECT MIN(year) FROM movies)";
+            String sql = "SELECT id, title, duration, year, productora FROM movies WHERE year = (SELECT MIN(year) FROM movies)";
             try{
                 st = ConexionSQLite.get_conexion().prepareStatement(sql);
                 rs = st.executeQuery();
@@ -193,7 +193,7 @@ public class Services {
         ResultSet rs = null;
         int n= 0;
         if (ConexionSQLite.get_conexion()!=null){
-            String sql = "SELECT movies.* FROM Movies INNER JOIN acts ON movies.id=acts.movie_id WHERE acts.actor = ?";
+            String sql = "SELECT movies.id, movies.title, movies.duration, movies.year, movies.productora FROM Movies INNER JOIN acts ON movies.id=acts.movie_id WHERE acts.actor = ?";
             try{
                 st = ConexionSQLite.get_conexion().prepareStatement(sql);
                 st.setString(1, actor);
@@ -218,7 +218,7 @@ public class Services {
         ResultSet rs = null;
         int n= 0;
         if (ConexionSQLite.get_conexion()!=null){
-            String sql = "SELECT movies.*, COUNT(actor) AS actor_count FROM movies LEFT JOIN Acts ON movies.id=acts.movie_id GROUP BY title HAVING actor_count = 0;";
+            String sql = "SELECT movies.id, movies.title, movies.duration, movies.year, movies.productora, COUNT(actor) AS actor_count FROM movies LEFT JOIN Acts ON movies.id=acts.movie_id GROUP BY title HAVING actor_count = 0;";
             try{
                 st = ConexionSQLite.get_conexion().prepareStatement(sql);
                 rs = st.executeQuery();
