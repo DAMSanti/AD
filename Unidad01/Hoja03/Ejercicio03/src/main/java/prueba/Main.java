@@ -18,7 +18,6 @@ public class Main {
                 int cancion = new Scanner(System.in).nextInt();
                 if (Servicios.vota(cancion, usuario)) {
                     System.out.println("Voto registrado");
-                    // pintaVoto();
                 } else {
                     System.out.println("No se ha podido registrar el voto");
                 }
@@ -31,12 +30,6 @@ public class Main {
         }
     }
 
-    public static void pintaVoto() {
-        System.out.println("Votos registrados");
-        System.out.println("Titulo: " + usuario);
-        System.out.println("Canción: " + usuario);
-        System.out.println("Posicion: " + usuario);
-    }
 
     public static boolean logIn() {
         boolean conectado = false;

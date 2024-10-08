@@ -2,21 +2,11 @@ package org.example.Servicios;
 
 import org.example.Conexion.Conexion;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Scanner;
 
 public class Servicios {
-  /*  public static void main(String[] args) {
-        if (Conexion.get_conexion() != null) {
-            datos10UltimosVotos();
-        } else {
-            System.out.println("No se pudo establecer la conexión");
-        }
-    }
-*/
+
     public static void datos10UltimosVotos() {
         Scanner teclado = new Scanner(System.in);
         ResultSet rs = null;
@@ -48,7 +38,13 @@ public class Servicios {
                             actualizarVotosUsuario(con, newUser, 1);
                             }
                         case 2 -> {
+                            int filaActual = rs.getRow();
                             rs.deleteRow();
+                            if (filaActual > 1) {
+                                rs.absolute(filaActual - 1);
+                            } else {
+                                rs.beforeFirst();
+                            }
                             actualizarVotosUsuario(con, oldUser, -1);
                             actualizarVotosCancion(con, cancion, -1);
                         }
@@ -76,9 +72,10 @@ public class Servicios {
     }
 
     private static void actualizarVotosUsuario(Connection con, String usuario, int incremento) throws SQLException {
-        try (Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
-            String sql = "SELECT * FROM usuarios WHERE user = '" + usuario + "'";
-            ResultSet rs = st.executeQuery(sql);
+        String sql = "SELECT * FROM usuarios WHERE user = ?";
+        try (PreparedStatement st = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
+            st.setString(1, usuario);
+            ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 int votos = rs.getInt("numVotos") + incremento;
                 rs.updateInt("numVotos", votos);
@@ -88,9 +85,10 @@ public class Servicios {
     }
 
     private static void actualizarVotosCancion(Connection con, String cancion, int incremento) throws SQLException {
-        try (Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
-            String sql = "SELECT * FROM canciones WHERE numCancion = '" + cancion + "'";
-            ResultSet rs = st.executeQuery(sql);
+        String sql = "SELECT * FROM canciones WHERE numCancion = ?";
+        try (PreparedStatement st = con.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
+            st.setInt(1, Integer.parseInt(cancion));
+            ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 int votos = rs.getInt("total_votos") + incremento;
                 rs.updateInt("total_votos", votos);

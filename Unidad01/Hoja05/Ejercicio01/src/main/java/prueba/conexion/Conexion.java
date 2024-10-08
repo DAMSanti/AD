@@ -1,4 +1,4 @@
-package org.example.Conexion;
+package prueba.conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,14 +18,15 @@ public class Conexion {
         properties.setProperty("useSSL", "false");
         properties.setProperty("allowPublicKeyRetrieval", "true");
         properties.setProperty("serverTimezone", "UTC");
+        properties.setProperty("allowMultiQueries", "true");
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3307/concursomusica", properties);
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3307/", properties);
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Connection failed", e);
         }
 
         if (conexion == null) {
-            String url = "jdbc:mysql://localhost:3307/concursomusica";
+            String url = "jdbc:mysql://localhost:3307/";
             String user = "root";
             String password = "mysql";
             try {
