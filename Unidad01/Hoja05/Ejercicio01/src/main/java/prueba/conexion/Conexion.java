@@ -14,21 +14,21 @@ public class Conexion {
         Properties properties = new Properties();
         Connection con = null;
         properties.setProperty("user", "root");
-        properties.setProperty("password", "mysql");
+        properties.setProperty("password", "root");
         properties.setProperty("useSSL", "false");
         properties.setProperty("allowPublicKeyRetrieval", "true");
         properties.setProperty("serverTimezone", "UTC");
         properties.setProperty("allowMultiQueries", "true");
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3307/", properties);
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", properties);
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Connection failed", e);
         }
 
         if (conexion == null) {
-            String url = "jdbc:mysql://localhost:3307/";
+            String url = "jdbc:mysql://localhost:3306/";
             String user = "root";
-            String password = "mysql";
+            String password = "root";
             try {
                 conexion = DriverManager.getConnection(url, user, password);
             } catch (Exception e) {

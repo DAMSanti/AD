@@ -7,28 +7,27 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Conection {
-    private static final Logger logger = Logger.getLogger(Connection.class.getName());
+    private static final Logger logger = Logger.getLogger(Conection.class.getName());
     private static Connection conexion = null;
 
     public static Connection get_conexion() {
         Properties properties = new Properties();
         Connection con = null;
-        properties.setProperty("user", "postgres");
-        properties.setProperty("password", "postgres");
+        properties.setProperty("user", "root");
+        properties.setProperty("password", "root");
         properties.setProperty("useSSL", "false");
         properties.setProperty("allowPublicKeyRetrieval", "true");
         properties.setProperty("serverTimezone", "UTC");
-        properties.setProperty("allowMultiQueries", "true");
         try {
-            con = DriverManager.getConnection("jdbc:postgresql://10.0.22.27:5432/heroes5", properties);
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/preguntatest", properties);
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Connection failed", e);
         }
 
         if (conexion == null) {
-            String url = "jdbc:postgresql://10.0.22.27:5432/heroes5";
-            String user = "postgres";
-            String password = "postgres";
+            String url = "jdbc:mysql://localhost:3306/preguntatest";
+            String user = "root";
+            String password = "root";
             try {
                 conexion = DriverManager.getConnection(url, user, password);
             } catch (Exception e) {

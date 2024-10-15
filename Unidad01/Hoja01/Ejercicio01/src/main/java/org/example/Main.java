@@ -4,6 +4,8 @@ package org.example;
 import org.example.conexion.ConexionSQLite;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
