@@ -25,12 +25,12 @@ public class GrupoRepositoryImpl implements GrupoRepository{
 
     @Override
     public Grupo findById(int id) {
-        return null;
+        return jdbcTemplate.queryForObject("SELECT * FROM grupos WHERE codGrupo = ?", new GrupoRowMapper(), id);
     }
 
     @Override
     public Grupo findByLocalidad(String location) {
-        return null;
+        return jdbcTemplate.queryForObject("SELECT * FROM grupos WHERE localidad = ?", new GrupoRowMapper(), location);
     }
 
     @Override
@@ -41,12 +41,17 @@ public class GrupoRepositoryImpl implements GrupoRepository{
 
     @Override
     public int update(Grupo grupo) {
-        return 0;
+        try {
+            return jdbcTemplate.update("UPDATE grupo SET nombre = ?, localidad = ?, estilo = ?, esGrupo = ?, annoGrab = ?, fechaEstreno = ?, compania = ? WHERE codGrupo = ?",
+                    grupo.getNombre(), grupo.getLocalidad(), grupo.getEstilo(), grupo.isEsGrupo(), grupo.getAnnoGrab(), grupo.getFechaEstreno(), grupo.getCompania(), grupo.getCodGrupo());
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     @Override
     public int deleteById(int id) {
-        return 0;
+        return jdbcTemplate.update("DELETE FROM grupo WHERE codGrupo = ?", id);
     }
 
     private static class GrupoRowMapper implements RowMapper<Grupo> {
