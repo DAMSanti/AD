@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99061394-a72f-4d4a-a3f2-34ce67739d45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Examen01/Ejercicio01/src/main/java/prueba/conexion/ConexionMySQL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Examen01/Ejercicio01/src/main/java/prueba/conexion/ConexionSQLite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Examen01/Ejercicio01/src/main/java/prueba/modelos/Emitido.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Examen01/Ejercicio01/src/main/java/prueba/modelos/Video.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Examen01/Ejercicio01/src/main/java/prueba/services/Services.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Examen01/Ejercicio01/videos_examen.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Unidad02/Ejercicio02/src/main/java/prueba/models/Empleado.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Unidad02/Ejercicio02/src/main/java/prueba/models/Sueldo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Unidad02/Ejercicio02/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demoSpring/src/main/java/com/example/demoSpring/Repository/CancionRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../demoSpring/src/main/java/com/example/demoSpring/Repository/CancionRepositoryImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +50,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Usuarios/DAM2/IdeaProjects/AD/Unidad01/Hoja05/Ejercicio01",
+    "last_opened_file_path": "D:/Usuarios/DAM2/IdeaProjects/AD/Unidad01/Hoja06/Ejercicio01",
     "onboarding.tips.debug.path": "D:/Usuarios/DAM2/IdeaProjects/AD/Unidad01/Hoja06/Ejercicio01/src/main/java/prueba/Main.java"
   }
 }]]></component>
