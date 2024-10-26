@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="38ba6f43-0b29-45ce-8f0c-9b0ca5c18db1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Ejercicio01/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ejercicio01/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ejercicio01/src/main/java/prueba/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ejercicio01/src/main/java/prueba/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;DAMSanti&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DAMSanti/AD.git&quot;,
+    &quot;accountId&quot;: &quot;d86ed0a6-360a-4581-9553-7697d3ef6863&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2nFbCTqaip5d0tONlubDb08U4cD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Usuarios/DAM2/IdeaProjects/AD/Unidad01/Hoja05/VictorGuardo-ExPSP",
+    "onboarding.tips.debug.path": "D:/Usuarios/DAM2/IdeaProjects/AD/Unidad01/Hoja05/VictorGuardo-ExPSP/src/main/java/prueba/Main.java",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="38ba6f43-0b29-45ce-8f0c-9b0ca5c18db1" name="Changes" comment="" />
+      <created>1728571646040</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728571646040</updated>
+    </task>
+    <servers />
+  </component>
+</project>

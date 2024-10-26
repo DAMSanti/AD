@@ -1,0 +1,28 @@
+    <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                                     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+                 version="2.2">
+        <!-- Definición de la unidad de persistencia -->
+        <persistence-unit name="Persistencia">
+            <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+            <!-- clases persistentes del proyecto -->
+
+            <properties>
+                <!-- Configuración de la conexión a base de datos -->
+                <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/empleados"/>
+                <property name="jakarta.persistence.jdbc.user" value="root"/>
+                <property name="jakarta.persistence.jdbc.password" value="mysql"/>
+
+                <!-- Configuración de dialecto de Hibernate para BD-->
+                <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+
+                <!-- Configuración pde comportamiento DDL (create, update, none)-->
+                <property name="hibernate.hbm2ddl.auto" value="create"/>
+
+                <!-- Opcional: Configuración para ver las consultas SQL generadas-->
+                <property name="hibernate.show_sql" value="true"/>
+                <property name="hibernate.format_sql" value="true"/>
+            </properties>
+        </persistence-unit>
+    </persistence>
