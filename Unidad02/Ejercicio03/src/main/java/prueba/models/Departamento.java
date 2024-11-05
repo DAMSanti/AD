@@ -46,4 +46,12 @@ public class Departamento {
     public void setLocalidad(String localidad) {
         this.localidad = localidad;
     }
+
+    public List<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public void setEmpleados(List<Empleado> empleados) {
+        this.empleados = empleados;
+    }
 }
