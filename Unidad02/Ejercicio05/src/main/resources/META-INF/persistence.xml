@@ -10,9 +10,9 @@
 
             <properties>
                 <!-- Configuración de la conexión a base de datos -->
-                <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/empleados"/>
+                <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/empleados"/>
                 <property name="jakarta.persistence.jdbc.user" value="root"/>
-                <property name="jakarta.persistence.jdbc.password" value="mysql"/>
+                <property name="jakarta.persistence.jdbc.password" value="root"/>
 
                 <!-- Configuración de dialecto de Hibernate para BD-->
                 <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>

@@ -1,10 +1,12 @@
 package prueba.models;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
+@DiscriminatorValue("EmpleadoEstudio")
 public class EstudioOficial extends Estudio {
     private String centro;
     private String realDecreto;
