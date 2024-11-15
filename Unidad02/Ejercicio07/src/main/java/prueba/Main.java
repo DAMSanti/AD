@@ -18,6 +18,7 @@ public class Main {
         boolean salir = false;
 
         while (salir == false) {
+            // Menu
             System.out.println("GESTION DE ALUMNOS");
             System.out.println("1.- Datos de alumno\n2.- Datos de curso\n3.- Listado de cursos\n4.- Listado de alumnos de curso\n0.- Salir");
             switch(teclado.nextInt()) {
