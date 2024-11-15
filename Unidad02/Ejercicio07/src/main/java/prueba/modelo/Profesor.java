@@ -6,6 +6,9 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "profesor")
+@NamedQueries({
+        @NamedQuery(name = "Profesor.findById", query = "SELECT p FROM Profesor p WHERE p.id = :id")
+})
 public class Profesor {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profesor_id_gen")

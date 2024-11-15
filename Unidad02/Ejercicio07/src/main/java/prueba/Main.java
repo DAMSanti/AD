@@ -20,7 +20,7 @@ public class Main {
         while (salir == false) {
             // Menu
             System.out.println("GESTION DE ALUMNOS");
-            System.out.println("1.- Datos de alumno\n2.- Datos de curso\n3.- Listado de cursos\n4.- Listado de alumnos de curso\n0.- Salir");
+            System.out.println("1.- Datos de alumno\n2.- Datos de curso\n3.- Listado de cursos\n4.- Listado de alumnos de curso\n5.- Modificar nombre del curso\n6.- Añadir curso\n0.- Salir");
             switch(teclado.nextInt()) {
                 case 1-> {
                     teclado.nextLine();
@@ -58,6 +58,50 @@ public class Main {
                         System.out.println("Curso: " + alumno.getCurso().getNombre());
                         System.out.println("Nota Media: " + alumno.getNotaMedia());
                         System.out.println("-----");
+                    }
+                }
+                case 5-> {
+                    teclado.nextLine();
+                    System.out.println("Introduce el id del curso: ");
+                    String id = teclado.nextLine();
+                    Curso curso = em.find(Curso.class, id);
+                    if (curso != null) {
+                        System.out.println("Nombre actual: " + curso.getNombre());
+                        System.out.println("Introduce el nuevo nombre: ");
+                        String nuevoNombre = teclado.nextLine();
+                        em.getTransaction().begin();
+                        curso.setNombre(nuevoNombre);
+                        em.getTransaction().commit();
+                        System.out.println("Nombre del curso actualizado a: " + curso.getNombre());
+                    } else {
+                        System.out.println("Curso no encontrado");
+                    }
+                }
+                case 6-> {
+                    teclado.nextLine();
+                    String id;
+                    do {
+                        System.out.println("Introduce el id del curso: ");
+                        id = teclado.nextLine();
+                    } while (id.length() != 4 || id.length() == 0);
+                    Curso curso = em.find(Curso.class, id);
+                    if (curso == null) {
+                        curso = new Curso();
+                        curso.setId(id);
+                        System.out.println("Introduce el nombre del curso: ");
+                        curso.setNombre(teclado.nextLine());
+                        Profesor profe = em.createNamedQuery("Profesor.findById", Profesor.class).setParameter("id", 2).getSingleResult();
+                        curso.setProfesor(profe);
+                        try {
+                            em.getTransaction().begin();
+                            em.persist(curso);
+                            em.getTransaction().commit();
+                            System.out.println("Curso añadido");
+                        } catch (Exception e) {
+                            System.out.println("Error al añadir el curso");
+                        }
+                    } else {
+                        System.out.println("Curso ya existe");
                     }
                 }
                 case 0-> {
