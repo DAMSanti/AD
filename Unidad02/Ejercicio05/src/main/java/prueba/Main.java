@@ -29,7 +29,8 @@ public class Main {
             estudioHumanidades1.setNumeroHoras(100);
 
             EstudioNoOficial estudioHumanidades2 = new EstudioNoOficial();
-            estudioHumanidades2.setAcademia("Filosofía");
+            estudioHumanidades2.setNombre("Filosofía");
+            estudioHumanidades2.setAcademia("Academia de Filosofía");
             estudioHumanidades2.setNumeroHoras(150);
 
             entityManager.persist(estudioTecnico1);

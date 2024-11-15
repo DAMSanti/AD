@@ -18,6 +18,7 @@ public class Empleado {
     @Embedded
     private Sueldo sueldo;
     @ManyToOne
+    @JoinColumn(name = "departamento_id")
     private Departamento departamento;
     @ManyToMany
     @JoinTable(

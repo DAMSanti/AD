@@ -1,15 +1,21 @@
 package prueba.models;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "id")
+@DiscriminatorValue("NO_OFICIAL")
+@Table(name = "estudios_no_oficiales")
 public class EstudioNoOficial extends Estudio {
+    private static final long serialVersionUID = 1L;
+
     private String academia;
     private int numeroHoras;
 
     public EstudioNoOficial() {
+        super();
     }
 
     public EstudioNoOficial(String nombre, String academia, int numeroHoras) {
