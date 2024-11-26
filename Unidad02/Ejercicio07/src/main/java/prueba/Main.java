@@ -27,6 +27,10 @@ public class Main {
                     System.out.println("Introduce el id del alumno:");
                     int id = teclado.nextInt();
                     Alumno alumno = em.find(Alumno.class, id);
+                    if (alumno == null) {
+                        System.out.println("Alumno no encontrado");
+                        break;
+                    }
                     System.out.println("Nombre: " + alumno.getNombre());
                 }
                 case 2-> {
@@ -34,6 +38,10 @@ public class Main {
                     System.out.println("Introduce el id del curso:");
                     String id = teclado.nextLine();
                     Curso curso = em.find(Curso.class, id);
+                    if (curso == null) {
+                        System.out.println("Curso no encontrado");
+                        break;
+                    }
                     Profesor profesor = em.find(Profesor.class, curso.getProfesor().getId());
                     System.out.println("Nombre: " + curso.getNombre() + " Tutor: " + profesor.getNombre());
 
@@ -52,6 +60,11 @@ public class Main {
                     String id = teclado.nextLine();
                     Curso curso = em.find(Curso.class, id);
                     List<Alumno> alumnos = em.createNamedQuery("Alumno.findByCurso", Alumno.class).setParameter("id", curso).getResultList();
+
+                    if (alumnos.isEmpty()) {
+                        System.out.println("No hay alumnos en el curso");
+                        break;
+                    }
 
                     for (Alumno alumno : alumnos) {
                         System.out.println("Nombre: " + alumno.getNombre());
@@ -102,6 +115,28 @@ public class Main {
                         }
                     } else {
                         System.out.println("Curso ya existe");
+                    }
+                }
+                case 7-> {
+                    teclado.nextLine();
+                    System.out.println("Introduce el id del curso: ");
+                    String id = teclado.nextLine();
+                    Curso curso = em.find(Curso.class, id);
+                    if (curso != null) {
+                        System.out.println("Nombre actual: " + curso.getNombre());
+                        System.out.println("Introduce el id del nuevo tutor: ");
+                        int nuevoTutorId = teclado.nextInt();
+                        Profesor nuevoTutor = em.find(Profesor.class, nuevoTutorId);
+                        if (nuevoTutor != null) {
+                            em.getTransaction().begin();
+                            curso.setProfesor(nuevoTutor);
+                            em.getTransaction().commit();
+                            System.out.println("Tutor del curso actualizado a: " + nuevoTutor.getNombre());
+                        } else {
+                            System.out.println("Tutor no encontrado");
+                        }
+                    } else {
+                        System.out.println("Curso no encontrado");
                     }
                 }
                 case 0-> {
