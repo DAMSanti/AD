@@ -10,7 +10,11 @@
 
             <properties>
                 <!-- Configuración de la conexión a base de datos -->
+<<<<<<< Updated upstream
                 <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://10.0.22.1:5432/cursos"/>
+=======
+                <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://192.168.1.58:5432/cursos"/>
+>>>>>>> Stashed changes
                 <property name="jakarta.persistence.jdbc.user" value="postgres"/>
                 <property name="jakarta.persistence.jdbc.password" value="postgres"/>
 

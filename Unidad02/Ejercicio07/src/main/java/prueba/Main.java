@@ -82,10 +82,14 @@ public class Main {
                         System.out.println("Nombre actual: " + curso.getNombre());
                         System.out.println("Introduce el nuevo nombre: ");
                         String nuevoNombre = teclado.nextLine();
-                        em.getTransaction().begin();
-                        curso.setNombre(nuevoNombre);
-                        em.getTransaction().commit();
-                        System.out.println("Nombre del curso actualizado a: " + curso.getNombre());
+                        try {
+                            em.getTransaction().begin();
+                            curso.setNombre(nuevoNombre);
+                            em.getTransaction().commit();
+                            System.out.println("Nombre del curso actualizado a: " + curso.getNombre());
+                        } catch (Exception e) {
+                            System.out.println("Error al actualizar el nombre del curso");
+                        }
                     } else {
                         System.out.println("Curso no encontrado");
                     }
@@ -118,6 +122,7 @@ public class Main {
                     }
                 }
                 case 7-> {
+<<<<<<< Updated upstream
                     teclado.nextLine();
                     System.out.println("Introduce el id del curso: ");
                     String id = teclado.nextLine();
@@ -134,11 +139,84 @@ public class Main {
                             System.out.println("Tutor del curso actualizado a: " + nuevoTutor.getNombre());
                         } else {
                             System.out.println("Tutor no encontrado");
+=======
+                    System.out.println("Introduce el id del curso: ");
+                    String id = teclado.nextLine();
+                    System.out.println("Introduce el nombre del curso: ");
+                    String nombre = teclado.nextLine();
+
+                    Curso curso = em.find(Curso.class, id);
+                    em.getTransaction().begin();
+                    if (curso == null) {
+                        curso = new Curso();
+                        curso.setId(id);
+                        curso.setNombre(nombre);
+                        Profesor profe = em.createNamedQuery("Profesor.findById", Profesor.class).setParameter("id", 2).getSingleResult();
+                        curso.setProfesor(profe);
+                        em.persist(curso);
+                        System.out.println("Curso añadido");
+                    } else {
+                        curso.setNombre(nombre);
+                        System.out.println("Introduce el id del tutor: ");
+                        int tutorId = teclado.nextInt();
+                        Profesor profe = em.find(Profesor.class, tutorId);
+                        curso.setProfesor(profe);
+                        System.out.println("Curso modificado");
+                    }
+                    em.getTransaction().commit();
+                }
+                case 8-> {
+                    System.out.println("Introduce el id del curso: ");
+                    String id = teclado.nextLine();
+                    Curso curso = em.find(Curso.class, id);
+
+                    if (curso != null) {
+                        System.out.println("Nombre del curso: " + curso.getNombre());
+                        System.out.println("Nombre del tutor actual: " + curso.getProfesor().getNombre());
+
+                        System.out.println("Introduce el id del nuevo tutor: ");
+                        int tutorId = teclado.nextInt();
+                        teclado.nextLine(); // Limpiar el buffer
+
+                        Profesor nuevoTutor = em.find(Profesor.class, tutorId);
+                        if (nuevoTutor != null) {
+                            List<Curso> cursos = em.createNamedQuery("Curso.findAll", Curso.class).getResultList();
+                            boolean isAlreadyTutor = cursos.stream().anyMatch(c -> c.getProfesor().getId() == tutorId);
+
+                            if (!isAlreadyTutor) {
+                                em.getTransaction().begin();
+                                curso.setProfesor(nuevoTutor);
+                                em.getTransaction().commit();
+                                System.out.println("Tutor del curso actualizado a: " + nuevoTutor.getNombre());
+                            } else {
+                                System.out.println("El profesor ya es tutor de otro curso");
+                            }
+                        } else {
+                            System.out.println("Profesor no encontrado");
+>>>>>>> Stashed changes
                         }
                     } else {
                         System.out.println("Curso no encontrado");
                     }
                 }
+<<<<<<< Updated upstream
+=======
+                case 9-> {
+                    System.out.println("Introduce el id del alumno: ");
+                    int id = teclado.nextInt();
+                    teclado.nextLine(); // Limpiar el buffer
+
+                    Alumno alumno = em.find(Alumno.class, id);
+                    if (alumno != null) {
+                        em.getTransaction().begin();
+                        em.remove(alumno);
+                        em.getTransaction().commit();
+                        System.out.println("Alumno eliminado");
+                    } else {
+                        System.out.println("Alumno no encontrado");
+                    }
+                }
+>>>>>>> Stashed changes
                 case 0-> {
                     salir = true;
                 }
