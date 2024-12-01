@@ -23,7 +23,7 @@ public class Main {
         grupos.forEach(g -> System.out.println(g.getNombre()));
 
         // 2. Listado de usuarios que no han votado
-        TypedQuery<Usuario> query2 = em.createQuery("SELECT u FROM Usuario u WHERE u.haVotado = false", Usuario.class);
+        TypedQuery<Usuario> query2 = em.createQuery("SELECT u FROM Usuario u WHERE u.numvotos = 0", Usuario.class);
         List<Usuario> usuariosNoVotaron = query2.getResultList();
         usuariosNoVotaron.forEach(u -> System.out.println(u.getNombre()));
 
