@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         String palabra;
+        String urlFichero = "D:\\Usuarios\\DAM227\\Desktop\\fichero_tarea3.json";
         Scanner teclado = new Scanner(System.in);
         System.out.println("GESTION DE FICHEROS\n1.- Leer Contenido1\n2,. Leer Contenido2\n3.- Reemplazar texto" +
                 "\n4.- Modificar linea\n5.- Eliminar linea\n6.- Añadir linea\n7.- Salir");
@@ -17,13 +18,13 @@ public class Main {
                 teclado.nextLine();
                 System.out.println("Introduce la palabra a buscar:");
                 palabra = teclado.nextLine();
-                leerFicheroYBuscarPalabra("D:\\Usuarios\\DAM227\\Desktop\\fichero_tarea3.json", palabra);
+                leerFicheroYBuscarPalabra(urlFichero, palabra);
                 break;
             case 2:
                 teclado.nextLine();
                 System.out.println("Introduce la palabra a buscar:");
                 palabra = teclado.nextLine();
-                leerFicheroYBuscarPalabra2("D:\\Usuarios\\DAM227\\Desktop\\fichero_tarea3.json", palabra);
+                leerFicheroYBuscarPalabra2(urlFichero, palabra);
                 break;
             case 3:
                 teclado.nextLine();
@@ -31,7 +32,7 @@ public class Main {
                 String textoViejo = teclado.nextLine();
                 System.out.println("Introduce el nuevo texto:");
                 String textoNuevo = teclado.nextLine();
-                reemplazarTextoEnFichero("D:\\Usuarios\\DAM227\\Desktop\\fichero_tarea3.json", textoViejo, textoNuevo);
+                reemplazarTextoEnFichero(urlFichero, textoViejo, textoNuevo);
                 break;
             case 4:
                 System.out.println("Introduce el número de línea a modificar:");
@@ -39,17 +40,17 @@ public class Main {
                 teclado.nextLine();
                 System.out.println("Introduce el nuevo texto para la línea:");
                 String nuevoTexto = teclado.nextLine();
-                modificarLineaEnFichero("D:\\Usuarios\\DAM227\\Desktop\\fichero_tarea3.json", numeroLinea, nuevoTexto);
+                modificarLineaEnFichero(urlFichero, numeroLinea, nuevoTexto);
                 break;
             case 5:
                 System.out.println("Introduce el número de línea a eliminar:");
                 int lineaAEliminar = teclado.nextInt();
-                eliminarLineaEnFichero("D:\\Usuarios\\DAM227\\Desktop\\fichero_tarea3.json", lineaAEliminar);
+                eliminarLineaEnFichero(urlFichero, lineaAEliminar);
                 break;
             case 6:
                 System.out.println("Introduce el texto a añadir:");
                 String nuevoTextoLinea = teclado.nextLine();
-                anadirLineaEnFichero("D:\\Usuarios\\DAM227\\Desktop\\fichero_tarea3.json", nuevoTextoLinea);
+                anadirLineaEnFichero(urlFichero, nuevoTextoLinea);
                 break;
             case 7:
                 System.out.println("Salir");
