@@ -69,7 +69,7 @@ public class Main {
         try {
             List<String> lineas = Files.readAllLines(Paths.get(rutaFichero));
             for (String linea : lineas) {
-                if (linea.contains(palabra)) {
+                if (linea.toUpperCase().contains(palabra.toUpperCase())) {
                     System.out.println(linea);
                 }
             }
@@ -83,7 +83,7 @@ public class Main {
             List<String> lineas = Files.readAllLines(Paths.get(rutaFichero));
             for (int i = 0; i < lineas.size(); i++) {
                 String linea = lineas.get(i);
-                if (linea.contains(palabra)) {
+                if (linea.toUpperCase().contains(palabra.toUpperCase())) {
                     System.out.println((i + 1) + ": " + linea);
                 }
             }
