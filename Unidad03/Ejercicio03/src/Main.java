@@ -10,54 +10,58 @@ public class Main {
         String palabra;
         String urlFichero = "D:\\Usuarios\\DAM227\\Desktop\\fichero_tarea3.json";
         Scanner teclado = new Scanner(System.in);
-        System.out.println("GESTION DE FICHEROS\n1.- Leer Contenido1\n2,. Leer Contenido2\n3.- Reemplazar texto" +
-                "\n4.- Modificar linea\n5.- Eliminar linea\n6.- Añadir linea\n7.- Salir");
-        int opcion = teclado.nextInt();
-        switch (opcion) {
-            case 1:
-                teclado.nextLine();
-                System.out.println("Introduce la palabra a buscar:");
-                palabra = teclado.nextLine();
-                leerFicheroYBuscarPalabra(urlFichero, palabra);
-                break;
-            case 2:
-                teclado.nextLine();
-                System.out.println("Introduce la palabra a buscar:");
-                palabra = teclado.nextLine();
-                leerFicheroYBuscarPalabra2(urlFichero, palabra);
-                break;
-            case 3:
-                teclado.nextLine();
-                System.out.println("Introduce el texto a reemplazar:");
-                String textoViejo = teclado.nextLine();
-                System.out.println("Introduce el nuevo texto:");
-                String textoNuevo = teclado.nextLine();
-                reemplazarTextoEnFichero(urlFichero, textoViejo, textoNuevo);
-                break;
-            case 4:
-                System.out.println("Introduce el número de línea a modificar:");
-                int numeroLinea = teclado.nextInt();
-                teclado.nextLine();
-                System.out.println("Introduce el nuevo texto para la línea:");
-                String nuevoTexto = teclado.nextLine();
-                modificarLineaEnFichero(urlFichero, numeroLinea, nuevoTexto);
-                break;
-            case 5:
-                System.out.println("Introduce el número de línea a eliminar:");
-                int lineaAEliminar = teclado.nextInt();
-                eliminarLineaEnFichero(urlFichero, lineaAEliminar);
-                break;
-            case 6:
-                System.out.println("Introduce el texto a añadir:");
-                String nuevoTextoLinea = teclado.nextLine();
-                anadirLineaEnFichero(urlFichero, nuevoTextoLinea);
-                break;
-            case 7:
-                System.out.println("Salir");
-                break;
-            default:
-                System.out.println("Opcion no valida");
-        }
+        int opcion;
+        do {
+            System.out.println("GESTION DE FICHEROS\n1.- Leer Contenido1\n2,. Leer Contenido2\n3.- Reemplazar texto" +
+                    "\n4.- Modificar linea\n5.- Eliminar linea\n6.- Añadir linea\n7.- Salir");
+            opcion = teclado.nextInt();
+            switch (opcion) {
+                case 1:
+                    teclado.nextLine();
+                    System.out.println("Introduce la palabra a buscar:");
+                    palabra = teclado.nextLine();
+                    leerFicheroYBuscarPalabra(urlFichero, palabra);
+                    break;
+                case 2:
+                    teclado.nextLine();
+                    System.out.println("Introduce la palabra a buscar:");
+                    palabra = teclado.nextLine();
+                    leerFicheroYBuscarPalabra2(urlFichero, palabra);
+                    break;
+                case 3:
+                    teclado.nextLine();
+                    System.out.println("Introduce el texto a reemplazar:");
+                    String textoViejo = teclado.nextLine();
+                    System.out.println("Introduce el nuevo texto:");
+                    String textoNuevo = teclado.nextLine();
+                    reemplazarTextoEnFichero(urlFichero, textoViejo, textoNuevo);
+                    break;
+                case 4:
+                    System.out.println("Introduce el número de línea a modificar:");
+                    int numeroLinea = teclado.nextInt();
+                    teclado.nextLine();
+                    System.out.println("Introduce el nuevo texto para la línea:");
+                    String nuevoTexto = teclado.nextLine();
+                    modificarLineaEnFichero(urlFichero, numeroLinea, nuevoTexto);
+                    break;
+                case 5:
+                    System.out.println("Introduce el número de línea a eliminar:");
+                    int lineaAEliminar = teclado.nextInt();
+                    eliminarLineaEnFichero(urlFichero, lineaAEliminar);
+                    break;
+                case 6:
+                    teclado.nextLine();
+                    System.out.println("Introduce el texto a añadir:");
+                    String nuevoTextoLinea = teclado.nextLine();
+                    anadirLineaEnFichero(urlFichero, nuevoTextoLinea);
+                    break;
+                case 7:
+                    System.out.println("Salir");
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+            }
+        }while (opcion != 7);
 
     }
 
